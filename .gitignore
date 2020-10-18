@@ -1,0 +1,9 @@
+# WebStorm folder
+.idea
+
+# Node Modules
+node_modules
+
+# Distr output
+distr
+build
