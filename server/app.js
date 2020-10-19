@@ -2,16 +2,37 @@ const express = require('express')
 const config = require('config')
 const path = require('path')
 const mongoose = require('mongoose')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const passport = require('passport')
+const cookieParser = require('cookie-parser')
 // ----
 
 // Express
 const app = express()
 
+// Middleware Sessions
+app.use(
+  session({
+    secret: 'cats',
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: require('mongoose').connection }),
+  })
+)
+// Middleware Auth by Passport.Js
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(cookieParser())
+
 // Middleware
 app.use(express.json())
+
+// Routes
+app.use('/auth', require('./routes/auth'))
 app.use('/api/readings', require('./routes/readings'))
-//app.use(express.json({ extended: true }))
-//app.use(bodyParser.urlencoded({ extended: false }))
+app.use('/api/get-meters', require('./routes/get-meters'))
+app.use('/api/get-readings', require('./routes/get-readings'))
 
 // Middleware for production
 if (process.env.NODE_ENV === 'production') {
