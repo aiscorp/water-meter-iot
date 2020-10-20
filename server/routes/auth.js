@@ -8,7 +8,7 @@ require('../auth.strategies/google.strategy')
 // /auth/+google
 router.get(
   '/google',
-  passport.authenticate('vkontakte',{scope: ['https://www.googleapis.com/auth/plus.login']}),
+  passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login']}),
   async (req, res) => {}
 )
 
@@ -20,5 +20,11 @@ router.get(
     res.redirect(`${config.get('base_url')}`)
   }
 )
+
+// /auth/+logout
+router.get('/logout', async (req, res) => {
+  req.logout()
+  res.redirect(`${config.get('base_url')}`)
+})
 
 module.exports = router
