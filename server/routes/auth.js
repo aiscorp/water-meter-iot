@@ -15,16 +15,18 @@ router.get(
 // /auth/+google/callback
 router.get(
   '/google/callback',
-  passport.authenticate('google', {failureRedirect: `${config.get('base_url')}/login`}),
+  passport.authenticate('google', {failureRedirect: `${config.get('baseUrl')}/login`}),
   async (req, res) => {
-    res.redirect(`${config.get('base_url')}`)
+    console.log(req.query)
+
+    res.redirect(`${config.get('baseUrl')}`)
   }
 )
 
 // /auth/+logout
 router.get('/logout', async (req, res) => {
   req.logout()
-  res.redirect(`${config.get('base_url')}`)
+  res.redirect(`${config.get('baseUrl')}`)
 })
 
 module.exports = router

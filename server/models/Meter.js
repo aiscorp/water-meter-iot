@@ -5,7 +5,7 @@ const schema = new Schema({
   type: {type: String, required: true},
   description: {type: String},
   value: {type: Number, required: true},
-  readings: [{type: Types.ObjectId, ref: 'Reading'}]
+  user: {type: Types.ObjectId, ref: 'User'}
 })
 
 module.exports = model('Meter', schema)

@@ -1,7 +1,8 @@
 const User = require('../models/User')
 
 module.exports = (req, res, next) => {
-  User.findById(req.user.id, (error, user) => {
+  const {id} = req.user
+  User.findOne({id}, (error, user) => {
     if (error)
       res.status(500).json('DB error!')
 

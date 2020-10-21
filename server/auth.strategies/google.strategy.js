@@ -8,16 +8,19 @@ passport.use(
     {
       clientID: config.get('client_id'),
       clientSecret: config.get('client_secret'),
-      callbackURL: `${config.get('base_url')}/auth/google/callback`
+      callbackURL: `${config.get('baseUrl')}/auth/google/callback`
     },
     function (accessToken, refreshToken, params, profile, done) {
+      console.log('accessToken:', accessToken)
+      console.log('params', params)
+      console.log('profile', profile)
+
       const user = new User({
         id: profile.id,
-        displayName: profile.name,
+        displayName: profile.displayName,
         photo: profile.photos[0].value,
-        email: profile.email,
-        accessToken,
-        refreshToken
+        email: profile.email || '',
+        accessToken
       })
       User.findOne({id: profile.id}, (err, obj) => {
         if (!err) {

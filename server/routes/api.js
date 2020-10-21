@@ -28,10 +28,11 @@ router.get('/user', checkAuth, async (req, res) => {
   }
 })
 
-// /api/+meters
+// /api/+meters   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Wrong!!!!!
 router.get('/meters', checkAuth, async (req, res) => {
   try {
-    const meters$ = User.findOne({id: req.user.id}).meters
+    const {id} = req.user
+    const meters$ = User.findOne({id}).meters
 
     console.log('Meters:', meters$)
 
@@ -41,12 +42,27 @@ router.get('/meters', checkAuth, async (req, res) => {
   }
 })
 
-// /api/+readings:id
-router.get('/readings:id', checkAuth, async (req, res) => {
+// /api/+test/meters     !tested!
+router.get('/test/meters', async (req, res) => {
+  try {
+    const meters$ = await Meter.find()
+
+    console.log('Meters:', meters$)
+
+    res.status(200).send(meters$)
+  } catch (e) {
+    res.status(500).json({message: 'Server error'})
+  }
+})
+
+// /api/+readings?id=[10lettersId]     !tested!
+router.get('/readings', async (req, res) => {
   try {
     const {id} = req.query
-    const readings$ = Meter.findOne({id}).readings
+    const meter$ = await Meter.findOne({id})
+    const readings$ = await Reading.find({meter: meter$})
 
+    console.log(meter$)
     console.log('Readings by meter Id:', id)
     console.log(readings$)
 
@@ -56,18 +72,33 @@ router.get('/readings:id', checkAuth, async (req, res) => {
   }
 })
 
-// /api/+readings {id, time, delta, value}
+// /api/+test/readings     !tested!
+router.get('/test/readings', async (req, res) => {
+  try {
+    const readings$ = await Reading.find()
+
+    console.log('Readings:')
+    console.log(readings$)
+
+    res.status(200).send(readings$)
+  } catch (e) {
+    res.status(500).json({message: 'Server error'})
+  }
+})
+
+// /api/+readings {id, time, delta, value}     !tested!
 router.get('/reading', checkReading, async (req, res) => {
   try {
     const {reading, meter} = req
 
     const meter$ = await Meter.findOne({id: meter.id})
-    const reading$ = new Reading({...reading})
+    const reading$ = new Reading({...reading, meter: meter$})
 
-    meter$.readings.push(reading$.objectId)
+    meter$.value -= -reading.delta
+
 
     await reading$.save()
-    await meter$.update()
+    await meter$.updateOne({value: meter$.value})
 
     console.log(`Time:${new Date(Number(reading.time) * 1000)} Meter:${meter.type} Delta: ${reading.delta}m3 Current value:${reading.value}m3`)
 
@@ -77,13 +108,13 @@ router.get('/reading', checkReading, async (req, res) => {
   }
 })
 
-// /api/+init {id, type}
+// /api/+init {id, type}     !tested!
 router.get('/init', checkMeter, async (req, res) => {
   try {
     const {meter} = req
 
     if (meter.unregistered) {
-      const meter$ = new Meter({...meter, value: 0, readings: []})
+      const meter$ = new Meter({...meter, value: 0})
       await meter$.save()
 
       res.status(201).send({response: 'New meter is added', value: 0})

@@ -8,18 +8,18 @@ module.exports = (req, res, next) => {
     console.log('Wrong reading data', req.query)
   }
 
-  Meter.findById(id, (error, meter) => {
+  Meter.findOne({id}, (error, meter) => {
     if (error)
       res.status(500).json('DB error!')
 
     if (meter === null) {
-      res.meter = {id, type, unregistered: true}
+      req.meter = {id, type, unregistered: true}
       console.log('Unregistered meter Id:', id)
-      next()
+      return next()
     }
 
     // test!!!
-    res.meter = meter
+    req.meter = meter
     console.log('Meter founded:', meter.toJSON())
     // ---
 

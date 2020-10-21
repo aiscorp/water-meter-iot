@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     console.log('Wrong reading data', req.query)
   }
 
-  Meter.findById(id, (error, meter) => {
+  Meter.findOne({id}, (error, meter) => {
     if (error)
       res.status(500).json('DB error!')
 
@@ -20,10 +20,10 @@ module.exports = (req, res, next) => {
     }
 
     // test!!!
-    res.meter = meter
-    res.reading = {id, time, delta, value}
-    console.log('Meter founded:', meter.toJSON())
-    console.log('Reading is correct:', res.reading.toJSON())
+    req.meter = meter
+    req.reading = {id, time, delta, value}
+    console.log('Meter founded:', meter)
+    console.log('Reading is correct:', req.reading)
     // ---
 
     next()
