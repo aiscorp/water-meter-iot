@@ -1,14 +1,20 @@
 const User = require('../models/User')
 
 module.exports = (req, res, next) => {
+  if (!req.user)
+    return res.status(401).send('Not authorized!')
+
   const {id} = req.user
+  console.log('id:', id)
+
   User.findOne({id}, (error, user) => {
     if (error)
-      res.status(500).json('DB error!')
+      return res.status(500).send('DB error!')
 
     if (user === null)
-      res.status(401).json('Not authorized!')
+      return res.status(401).send('Not authorized!')
 
+    console.log('user:', user)
     next()
   })
 }
