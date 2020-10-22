@@ -3,7 +3,7 @@
 NodeMCU based on ESP8266 wi-fi chip with firmware running JS-like code (LUA language). 
 
 Board circuit:
-![Sketch circuit](curcuit/sketch.png)
+![Sketch circuit](nodemcu/curcuit/sketch.png)
 
 Board prototype photo:
-![Prototype photo](curcuit/prototype.png)
+![Prototype photo](nodemcu/curcuit/prototype.png)
