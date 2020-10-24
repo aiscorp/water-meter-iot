@@ -19,8 +19,8 @@ NodeMCU is an open source Lua based firmware for the ESP8266 WiFi SOC.
 [View on Github](https://github.com/nodemcu/nodemcu-firmware)    
 [View docs](https://nodemcu.readthedocs.io/en/1.5.4.1-final/)
 
-Firmware based on 3.0 version of NodeMCU with 17 modules and dev mode.     
-Modules: `dht,enduser_setup,file,gpio,http,mdns,net,node,rtcfifo,rtcmem,rtctime,sjson,sntp,tmr,uart,wifi,tls`    
+Firmware based on 3.0 version of NodeMCU with 18 modules and dev mode.     
+Modules: `dht, enduser_setup, file, gpio, http, mdns, net, node, pwm, rtcfifo, rtcmem, rtctime, sjson, sntp, tmr, uart, wifi, tls`    
 Build made by https://nodemcu-build.com/.    
 Last build are located in the `/firmware` folder. 
 
