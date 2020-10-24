@@ -1,6 +1,7 @@
 const Meter = require('../models/Meter')
 
 module.exports = (req, res, next) => {
+  console.log(req.query)
   const {id, type} = req.query
 
   if (!isMeterCorrect(id, type)) {
@@ -28,5 +29,5 @@ module.exports = (req, res, next) => {
 }
 
 const isMeterCorrect = (id, type) => {
-  return id.length === 8 && id[0] === 'I' && type.length > 0
+  return id.length === 10 && id[0] === 'I' && type.length > 0
 }

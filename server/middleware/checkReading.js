@@ -1,6 +1,7 @@
 const Meter = require('../models/Meter')
 
 module.exports = (req, res, next) => {
+  console.log(req.query)
   const {id, time, delta, value} = req.query
 
   if (!isReadingCorrect(id, time, delta, value))
@@ -31,5 +32,5 @@ module.exports = (req, res, next) => {
 }
 
 const isReadingCorrect = (id, time, delta, value) => {
-  return id.length === 8 && id[0] === 'I' && time.length === 10 && delta && value
+  return id.length === 10 && id[0] === 'I' && time.length === 10 && delta && value
 }

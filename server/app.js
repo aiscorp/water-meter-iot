@@ -79,9 +79,10 @@ async function start() {
     // await reading3$.save()
     // await reading4$.save()
 
-    https.createServer(options, app)
-      .listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
-    // app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
+    // https.createServer(options, app)
+    //   .listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
+    //
+    app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
   } catch (e) {
     console.log('Server Error', e.message)
     process.exit(1)
