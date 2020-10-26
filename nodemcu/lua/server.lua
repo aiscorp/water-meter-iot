@@ -23,7 +23,10 @@ local _send = function(meter)
 end
 
 local _init = function(meter)
-    local body = 'id=' .. meter.id .. '&type=' .. meter.type
+    local raw, reset_reason, exc = node.bootreason()
+    local status = raw .. '_' .. reset_reason .. '_' .. exc
+
+    local body = 'id=' .. meter.id .. '&type=' .. meter.type .. '&status=' .. status
     local url = serverUrl2 .. apiInit .. body
     print(url)
 
