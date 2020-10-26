@@ -1,0 +1,16 @@
+
+.Button {
+  display: inline-block;
+  position: relative;
+  border: none;
+  outline-style: none;
+  background: transparent;
+
+  &:disabled {
+    background: #ccc;
+    color: #555;
+    cursor: not-allowed;
+  }
+}
+
+
