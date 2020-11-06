@@ -14,10 +14,13 @@ const User = require('./models/User')
 // ----
 const https = require('https')
 const fs = require('fs')
-const options = {
-  key: fs.readFileSync('./config/localhost-key.pem'),
-  cert: fs.readFileSync('./config/localhost.pem')
+if (process.env.NODE_ENV === 'development') {
+  const options = {
+    key: fs.readFileSync('./config/localhost-key.pem'),
+    cert: fs.readFileSync('./config/localhost.pem')
+  }
 }
+
 
 // Express
 const app = express()
