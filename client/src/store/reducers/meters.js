@@ -26,8 +26,3 @@ export default function metersReducer(state = initialState, action) {
       return state
   }
 }
-
-
-// export const FETCH_METERS_START = 'FETCH_METERS_START'
-// export const FETCH_METERS_SUCCESS = 'FETCH_METERS_SUCCESS'
-// export const FETCH_METERS_ERROR = 'FETCH_METERS_ERROR'

@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom'
 import './config/config'
 import './index.css'
 import App from './App'
-import {BrowserRouter as Router} from 'react-router-dom'
+import {BrowserRouter as Router, Switch} from 'react-router-dom'
 import {applyMiddleware, compose, createStore} from 'redux'
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import rootReducer from './store/reducers/rootReducer'
+import graphqlClient from './graphql/graphqlClient'
+import {ApolloProvider} from '@apollo/react-hooks'
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -21,11 +23,13 @@ const store = createStore(
 
 const app = (
   <Provider store={store}>
-    <Router basename={window.ENV.baseUrl}>
-      <React.StrictMode>
-        <App/>
-      </React.StrictMode>
-    </Router>
+    <ApolloProvider client={graphqlClient}>
+      <Router basename={window.ENV.baseUrl}>
+        <React.StrictMode>
+          <App/>
+        </React.StrictMode>
+      </Router>
+    </ApolloProvider>
   </Provider>
 
 )

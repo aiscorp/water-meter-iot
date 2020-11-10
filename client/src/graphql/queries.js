@@ -22,7 +22,14 @@ export const GET_REPO_INFO = gql`
                         avatarUrl
                     }
                 }
-            }
+            }            
+        }
+    }
+`
+
+export const GET_REPO_FIRST_COMMITS = gql`
+    query {
+        repository(name: "water-meter-iot", owner: "aiscorp") {
             ref(qualifiedName: "master") {
                 target {
                     ... on Commit {
@@ -40,6 +47,58 @@ export const GET_REPO_INFO = gql`
                     }
                 }
             }
+        }
+    }
+`
+
+export const GET_REPO_README = gql`
+    query {
+        repository(name: "water-meter-iot", owner: "aiscorp") {
+            object(expression: "master:README.md") {
+                ... on Blob {
+                    text
+                }
+            }
+
+        }
+    }
+`
+
+export const GET_REPO_DEVICE_README = gql`
+    query {
+        repository(name: "water-meter-iot", owner: "aiscorp") {
+            object(expression: "master:nodemcu/readme.md") {
+                ... on Blob {
+                    text
+                }
+            }
+
+        }
+    }
+`
+
+export const GET_REPO_SERVER_README = gql`
+    query {
+        repository(name: "water-meter-iot", owner: "aiscorp") {
+            object(expression: "master:server/readme.md") {
+                ... on Blob {
+                    text
+                }
+            }
+
+        }
+    }
+`
+
+export const GET_REPO_FRONTEND_README = gql`
+    query {
+        repository(name: "water-meter-iot", owner: "aiscorp") {
+            object(expression: "master:client/README.md") {
+                ... on Blob {
+                    text
+                }
+            }
+
         }
     }
 `
