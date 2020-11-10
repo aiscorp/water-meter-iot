@@ -12,4 +12,4 @@ In this project, it is planned to work out React Hooks, get experience of intera
 Repo: https://github.com/aiscorp/water-meter-iot  
 Site: https://aiscorp.github.io/water-meter-iot
 
-<img src="https://github.com/aiscorp/water-meter-iot/blob/master/nodemcu/circuit/sketch.png" height=300>
+<img src="https://github.com/aiscorp/water-meter-iot/blob/master/nodemcu/circuit/sketch.png?raw=true" height=300>
