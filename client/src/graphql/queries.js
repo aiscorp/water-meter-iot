@@ -4,11 +4,21 @@ import gql from 'graphql-tag'
 export const GET_REPO_INFO = gql`
     query {
         repository(name: "water-meter-iot", owner: "aiscorp") {
+            name
+            owner {
+                login
+                url
+                avatarUrl
+            }
             description
             createdAt
             pushedAt
             languages(first: 10) {
-                edges {
+                edges {                    
+                    node {
+                        color
+                        name
+                    }
                     size
                 }
                 totalSize
@@ -20,9 +30,10 @@ export const GET_REPO_INFO = gql`
                         name
                         login
                         avatarUrl
+                        url
                     }
                 }
-            }            
+            }
         }
     }
 `
@@ -59,7 +70,6 @@ export const GET_REPO_README = gql`
                     text
                 }
             }
-
         }
     }
 `
@@ -72,7 +82,6 @@ export const GET_REPO_DEVICE_README = gql`
                     text
                 }
             }
-
         }
     }
 `
@@ -85,7 +94,6 @@ export const GET_REPO_SERVER_README = gql`
                     text
                 }
             }
-
         }
     }
 `
@@ -98,7 +106,6 @@ export const GET_REPO_FRONTEND_README = gql`
                     text
                 }
             }
-
         }
     }
 `
