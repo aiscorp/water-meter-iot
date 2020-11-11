@@ -61,12 +61,12 @@ export const langStat = (lang, langSize) => (
 
 export const collabStat = (collaborators) => (
   <>
-    <h4>Collaborators statistics:</h4>
+    <h4>Collaborators:</h4>
     <ul className="list-unstyled">
       {collaborators.edges.map((el, id) => {
         return (
           <li className="list-inline-item mr-3" key={id}>
-            <img className="mr-2" width={48} height={48} src={el.node.avatarUrl}/>&nbsp;
+            <img className="mr-2 rounded-circle" width={48} height={48} src={el.node.avatarUrl}/>&nbsp;
             <b>{el.node.name}</b>;&nbsp;&nbsp;
             <a target="_blank" rel="noopener noreferrer" href={el.node.url}>
               <FontAwesomeIcon icon={faUser}/>&nbsp;

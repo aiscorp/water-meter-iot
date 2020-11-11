@@ -25,11 +25,11 @@ const {loading, meters, fetchMeters} = props
     </ul>
 
   return (
-    <div class="container my-5">
-      <div class="col mx-auto">
-        <h2 class="text-center">Meters available:</h2>
+    <div className="container my-5">
+      <div className="col mx-auto">
+        <h2 className="text-center">Meters available:</h2>
       </div>
-      <div class="col-12 col-md-8 col-lg-6 mx-auto">
+      <div className="col-12 col-md-8 col-lg-6 mx-auto">
         {metersHtml}
       </div>
     </div>

@@ -54,18 +54,19 @@ export const GET_REPO_FIRST_COMMITS = gql`
                                     committedDate
                                 }
                             }
-                        }
+                        }  
                     }
                 }
             }
         }
     }
 `
-
+// $file = 'master:' + fileString
+// README.md, nodemcu/readme.md, server/readme.md, client/README.md
 export const GET_REPO_README = gql`
-    query {
+    query repository($file: String!) {
         repository(name: "water-meter-iot", owner: "aiscorp") {
-            object(expression: "master:README.md") {
+            object(expression: $file) {
                 ... on Blob {
                     text
                 }
@@ -74,38 +75,3 @@ export const GET_REPO_README = gql`
     }
 `
 
-export const GET_REPO_DEVICE_README = gql`
-    query {
-        repository(name: "water-meter-iot", owner: "aiscorp") {
-            object(expression: "master:nodemcu/readme.md") {
-                ... on Blob {
-                    text
-                }
-            }
-        }
-    }
-`
-
-export const GET_REPO_SERVER_README = gql`
-    query {
-        repository(name: "water-meter-iot", owner: "aiscorp") {
-            object(expression: "master:server/readme.md") {
-                ... on Blob {
-                    text
-                }
-            }
-        }
-    }
-`
-
-export const GET_REPO_FRONTEND_README = gql`
-    query {
-        repository(name: "water-meter-iot", owner: "aiscorp") {
-            object(expression: "master:client/README.md") {
-                ... on Blob {
-                    text
-                }
-            }
-        }
-    }
-`

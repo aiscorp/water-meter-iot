@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
-import {collabStat, commitStat, langStat, repoHeader} from './RepoInfo.functions'
+import React, {} from 'react'
+import {collabStat, langStat, repoHeader} from './RepoInfo.functions'
 
 const RepoInfo = (props) => {
   const {repository} = props.repoInfo
 
-  const [show, setShow] = useState(true)
+  // const [show, setShow] = useState(true)
 
   return (
     <>
