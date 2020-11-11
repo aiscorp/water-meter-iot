@@ -1,43 +1,45 @@
-import React, {useEffect} from 'react'
+import React, {useState} from 'react'
 import AboutAlert from '../components/AboutAlert/AboutAlert'
-import ShowMarkdown from '../components/ShowMarkdown/ShowMarkdown'
-import Loader from '../components/table/Loader/Loader'
 import {connect} from 'react-redux'
 import {fetchRepoFirstCommits, fetchRepoInfo, fetchRepoReadme} from '../store/actions/repo'
-import {Container, ProgressBar, Row} from 'react-bootstrap'
+import {Container, Tabs, Tab} from 'react-bootstrap'
 import RepoInfo from '../components/RepoInfo/RepoInfo'
+import RepoCommits from '../components/RepoCommits/RepoCommits'
+import RepoReadme from '../components/RepoReadme/RepoReadme'
 
 const AboutPage = props => {
-  const {loading, repoInfo, repoReadme, repoCommits, fetchRepoInfo, fetchRepoReadme, fetchRepoFirstCommits} = props
+  const {repoInfo, repoReadme, repoCommits, fetchRepoInfo, fetchRepoReadme, fetchRepoFirstCommits} = props
   const repoUrl = 'https://github.com/aiscorp/water-meter-iot'
-  const readmePath = 'https://raw.githubusercontent.com/aiscorp/water-meter-iot/master/README.md'
-  const file = 'README.MD'
 
-  useEffect(() => fetchRepoInfo(), [])
-  // useEffect(() => fetchRepoReadme('README.md'), [])
-  // useEffect(() => fetchRepoReadme('nodemcu/readme.md'), [])
-  // useEffect(() => fetchRepoReadme('server/readme.md'), [])
-  // useEffect(() => fetchRepoReadme('client/README.md'), [])
-  useEffect(() => fetchRepoFirstCommits(), [])
+  const [key, setKey] = useState('info')
 
-  // DEBUG
-  // console.log('AboutPage.fetchRepoReadme(README.MD):', repoReadme)
-  console.log('AboutPage.fetchRepoFirstCommits():', repoCommits)
+  return (
+    <Container className="my-2">
+      <AboutAlert repoUrl={repoUrl}/>
+      <Tabs className="" mountOnEnter={true} activeKey={key} onSelect={k => setKey(k)}>
+        <Tab eventKey="info" title="Git information">
+          <RepoInfo repoInfo={repoInfo} fetchRepoInfo={fetchRepoInfo}/>
+        </Tab>
+        <Tab eventKey="commits" title="Commits">
+          <RepoCommits repoCommits={repoCommits} fetchRepoFirstCommits={fetchRepoFirstCommits}/>
+        </Tab>
+        <Tab eventKey="readme1" title="Main readme">
+          <RepoReadme file='README.md' repoReadme={repoReadme} fetchRepoReadme={fetchRepoReadme}/>
+        </Tab>
+        <Tab eventKey="readme2" title="Device readme">
+          <RepoReadme file='nodemcu/readme.md' repoReadme={repoReadme} fetchRepoReadme={fetchRepoReadme}/>
+        </Tab>
+        <Tab eventKey="readme3" title="Server readme">
+          <RepoReadme file='server/readme.md' repoReadme={repoReadme} fetchRepoReadme={fetchRepoReadme}/>
+        </Tab>
+        <Tab eventKey="readme4" title="Frontend readme">
+          <RepoReadme file='client/README.md' repoReadme={repoReadme} fetchRepoReadme={fetchRepoReadme}/>
+        </Tab>
+      </Tabs>
 
-  if (loading) {
-    return <Loader/>
-  } else {
-    return (
-      <Container className="my-2">
-        <AboutAlert repoUrl={repoUrl}/>
-        {/*<RepoInfo repoInfo={repoInfo}/>*/}
-        <ShowMarkdown markdownUrl={readmePath}/>
-      </Container>
-    )
-  }
+    </Container>
+  )
 }
-
-// export default AboutPage
 
 function mapStateToProps(state) {
   return {

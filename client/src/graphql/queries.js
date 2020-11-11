@@ -61,8 +61,7 @@ export const GET_REPO_FIRST_COMMITS = gql`
         }
     }
 `
-// $file = 'master:' + fileString
-// README.md, nodemcu/readme.md, server/readme.md, client/README.md
+// FORMAT of $file = 'master:' + filePath
 export const GET_REPO_README = gql`
     query repository($file: String!) {
         repository(name: "water-meter-iot", owner: "aiscorp") {

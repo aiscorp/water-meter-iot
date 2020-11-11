@@ -10,7 +10,7 @@ const initialState = {
   loading: true,
   error: null,
   repoInfo: {},
-  repoReadme: [],
+  repoReadme: {},
   repoCommits: {}
 }
 
@@ -28,7 +28,7 @@ export default function repoReducer(state = initialState, action) {
     case FETCH_REPO_README_SUCCESS:
       return {
         ...state, loading: false,
-        repoReadme: [...state.repoReadme, action.repoReadme]
+        repoReadme: {...state.repoReadme, ...action.repoReadme}
       }
     case FETCH_REPO_FIRST_COMMITS_SUCCESS:
       return {
