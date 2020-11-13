@@ -10,7 +10,7 @@ export const commitsList = (commits) => (
     <h5>Last commits:&nbsp;</h5>
     <ul className="list-unstyled">
       {commits.edges.map((el, key) => (
-        <Media className={['p-2', key % 2 ? 'bg-dark text-white rounded' : ''].join(' ')} as="li" key={key}>
+        <Media className={['p-2', key % 2 ? 'bg-secondary text-white rounded' : ''].join(' ')} as="li" key={key}>
           <FontAwesomeIcon className="mx-2 my-auto" color={key % 2 ? 'white' : 'grey'} size="1x" icon={faHistory}/>
           <Media.Body>
             <div className="d-flex">

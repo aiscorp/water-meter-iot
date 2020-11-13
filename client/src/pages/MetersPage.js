@@ -1,38 +1,17 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {fetchMeters} from '../store/actions/meters'
-import Loader from '../components/table/Loader/Loader'
+import MetersList from '../components/MetersList/MetersList'
+import {Container} from 'react-bootstrap'
 
 const MetersPage = props => {
-const {loading, meters, fetchMeters} = props
+  const {loading, meters, fetchMeters} = props
 
-  useEffect(() => {
-    fetchMeters()
-  }, [])
-
-  const metersHtml = loading ?
-    <Loader/> :
-    <ul>
-      {meters.map(meter => {
-        return (
-          <li key={meter.id}>
-            <b>Id:&nbsp;{meter.id},&nbsp;</b>
-            <span>Type:&nbsp;{meter.type},&nbsp;</span>
-            <span>Value:&nbsp;{meter.value}</span>
-          </li>
-        )
-      })}
-    </ul>
 
   return (
-    <div className="container my-5">
-      <div className="col mx-auto">
-        <h2 className="text-center">Meters available:</h2>
-      </div>
-      <div className="col-12 col-md-8 col-lg-6 mx-auto">
-        {metersHtml}
-      </div>
-    </div>
+    <Container className="my-2">
+      <MetersList meters={meters} fetchMeters={fetchMeters}/>
+    </Container>
   )
 }
 
