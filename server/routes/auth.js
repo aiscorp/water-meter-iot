@@ -18,15 +18,16 @@ router.get(
   passport.authenticate('google', {failureRedirect: `${config.get('baseUrl')}/login`}),
   async (req, res) => {
     console.log(req.query)
+    console.log('redirect to:', config.get('frontUrl'))
 
-    res.redirect(`${config.get('baseUrl')}`)
+    res.redirect(`${config.get('frontUrl')}`)
   }
 )
 
 // /auth/+logout
 router.get('/logout', async (req, res) => {
   req.logout()
-  res.redirect(`${config.get('baseUrl')}`)
+  res.redirect(`${config.get('frontUrl')}`)
 })
 
 module.exports = router

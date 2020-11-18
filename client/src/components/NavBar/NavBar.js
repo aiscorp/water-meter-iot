@@ -16,7 +16,10 @@ const NavBar = props => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <NavLink exact to="/" activeClassName="active" className="nav-link">Meters</NavLink>
+            <NavLink exact to="/" activeClassName="active" className="nav-link">Home</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink exact to="/meters" activeClassName="active" className="nav-link">Meters</NavLink>
           </li>
           <li className="nav-item">
             <NavLink exact to="/readings" activeClassName="active" className="nav-link">Readings</NavLink>

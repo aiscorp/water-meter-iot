@@ -41,21 +41,18 @@ const AboutPage = props => {
   )
 }
 
-function mapStateToProps(state) {
-  return {
+const mapStateToProps =state => ({
     repoInfo: state.repo.repoInfo,
     repoReadme: state.repo.repoReadme,
     repoCommits: state.repo.repoCommits,
     loading: state.repo.loading
-  }
-}
+})
 
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchRepoInfo: () => dispatch(fetchRepoInfo()),
-    fetchRepoReadme: (file) => dispatch(fetchRepoReadme(file)),
-    fetchRepoFirstCommits: () => dispatch(fetchRepoFirstCommits())
-  }
+
+const mapDispatchToProps = {
+  fetchRepoReadme,
+  fetchRepoFirstCommits,
+  fetchRepoInfo
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AboutPage)

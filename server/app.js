@@ -7,6 +7,7 @@ const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 // ----
 const Meter = require('./models/Meter')
 const Reading = require('./models/Reading')
@@ -14,8 +15,10 @@ const User = require('./models/User')
 // ----
 const https = require('https')
 const fs = require('fs')
+
+let options
 if (process.env.NODE_ENV === 'development') {
-  const options = {
+  options = {
     key: fs.readFileSync('./config/localhost-key.pem'),
     cert: fs.readFileSync('./config/localhost.pem')
   }
@@ -41,7 +44,9 @@ app.use(passport.session())
 // app.use(express.json())
 
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Origin', req.headers.origin)
+  //res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Credentials', true)
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
@@ -66,33 +71,11 @@ async function start() {
       useCreateIndex: true
     })
 
-    // const meter1$ = new Meter(
-    //   { id: 'I0000001', type: 'Cold water meter', value: 105 })
-    // const meter2$ = new Meter(
-    //   { id: 'I0000002', type: 'Hot water meter', value: 95 })
-    // await meter1$.save()
-    // await meter2$.save()
-    //
-    //
-    // const reading1$ = new Reading(
-    //   {id: '000001', time: '1654789000', delta: 0.1, value: 0.1, meter: meter1$})
-    // const reading2$ = new Reading(
-    //   {id: '000002', time: '1654789000', delta: 0.1, value: 0.2, meter: meter1$})
-    // const reading3$ = new Reading(
-    //   {id: '000003', time: '1654789000', delta: 0.2, value: 0.4, meter: meter1$})
-    // const reading4$ = new Reading(
-    //   {id: '000004', time: '1654789000', delta: 0.3, value: 0.3, meter: meter2$})
-    //
-    //
-    // await reading1$.save()
-    // await reading2$.save()
-    // await reading3$.save()
-    // await reading4$.save()
 
-    // https.createServer(options, app)
-    //   .listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
+    https.createServer(options, app)
+      .listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
     //
-    app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
+    // app.listen(Number(PORT + 1), () => console.log(`App has been started on port ${PORT+1}...`))
   } catch (e) {
     console.log('Server Error', e.message)
     process.exit(1)

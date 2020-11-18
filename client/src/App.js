@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage'
 import MetersPage from './pages/MetersPage'
 import {TableDataProvider} from './components/TableDataProvider/TableDataProvider'
 import ReadingsPage from './pages/ReadingsPage'
+import HomePage from './pages/HomePage'
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
         <Route exact path='/table/:size' component={TableDataProvider}/>
         <Route path="/about" component={AboutPage}/>
         <Route path="/readings" component={ReadingsPage}/>
-        <Route path="/" component={MetersPage}/>
+        <Route path="/meters" component={MetersPage}/>
+        <Route path="/" component={HomePage}/>
       </Switch>
     </>
   )
