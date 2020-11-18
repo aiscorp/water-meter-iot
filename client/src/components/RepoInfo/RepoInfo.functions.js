@@ -66,7 +66,8 @@ export const collabStat = (collaborators) => (
       {collaborators.edges.map((el, id) => {
         return (
           <li className="list-inline-item mr-3" key={id}>
-            <img className="mr-2 rounded-circle" width={48} height={48} src={el.node.avatarUrl}/>&nbsp;
+            <img className="mr-2 rounded-circle" width={48} height={48}
+                 alt="" src={el.node.avatarUrl}/>&nbsp;
             <b>{el.node.name}</b>;&nbsp;&nbsp;
             <a target="_blank" rel="noopener noreferrer" href={el.node.url}>
               <FontAwesomeIcon icon={faUser}/>&nbsp;

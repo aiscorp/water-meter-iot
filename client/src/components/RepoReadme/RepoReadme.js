@@ -12,12 +12,11 @@ const RepoReadme = (props) => {
     fetchRepoReadme(file).then(() => {
       setLoading(false)
     })
-  }, [])
+  }, [fetchRepoReadme, file])
 
   if (loading) {
     return <Loader/>
   } else {
-    console.log('repoReadme[file].text', repoReadme[file].text)
     return (
       <Container className="px-2 my-1">
         <ShowMarkdown text={repoReadme[file].text}/>

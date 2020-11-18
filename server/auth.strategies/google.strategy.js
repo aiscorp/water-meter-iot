@@ -11,9 +11,6 @@ passport.use(
       callbackURL: `${config.get('baseUrl')}/auth/google/callback`
     },
     function (accessToken, refreshToken, params, profile, done) {
-      console.log('accessToken:', accessToken)
-      console.log('params', params)
-      console.log('profile', profile)
 
       const user = new User({
         id: profile.id,

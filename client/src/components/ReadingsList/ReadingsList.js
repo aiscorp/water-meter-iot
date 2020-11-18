@@ -4,20 +4,19 @@ import Loader from '../table/Loader/Loader'
 import {readingsList} from './ReadingsList.functions'
 
 const ReadingsList = (props) => {
-  const {loaded, readings, fetchReadings} = props
+  const {readings, fetchReadings} = props
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetchReadings().then(() => {
       setLoading(false)
     })
-  }, [])
+  }, [fetchReadings])
 
 
   if (loading) {
     return <Loader/>
   } else {
-    console.log('readings: ', readings)
     return (
       <Container className="px-2 my-1">
         {readingsList(readings)}

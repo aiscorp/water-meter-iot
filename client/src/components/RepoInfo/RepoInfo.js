@@ -4,7 +4,7 @@ import {Container} from 'react-bootstrap'
 import Loader from '../table/Loader/Loader'
 
 const RepoInfo = (props) => {
-  const {repoInfo, fetchRepoInfo} = props
+  const {fetchRepoInfo} = props
   const {repository} = props.repoInfo
 
   const [loading, setLoading] = useState(true)
@@ -13,7 +13,7 @@ const RepoInfo = (props) => {
     fetchRepoInfo().then(() => {
       setLoading(false)
     })
-  }, [])
+  }, [fetchRepoInfo])
 
   if (loading) {
     return <Loader/>

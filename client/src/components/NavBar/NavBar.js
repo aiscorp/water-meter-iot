@@ -1,35 +1,41 @@
 import React from 'react'
 import logo from './logo.svg'
 import {Link, NavLink} from 'react-router-dom'
+import {Navbar, Nav, NavDropdown} from 'react-bootstrap'
+import AuthNavItem from '../AuthNavItem/AuthNavItem'
 
 const NavBar = props => {
   return (
-    <div className="navbar navbar-expand-md navbar-dark bg-dark">
-      <Link to="/" className="navbar-brand">
-        <img src={logo} width="30" height="30" className="d-inline-block align-top mr-2" alt="" loading="lazy"/>
-        Water meters IOT
-      </Link>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
+    <>
+      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+        <Link to="/" className="navbar-brand">
+          <img src={logo} width="30" height="30"
+               className="d-inline-block align-top mr-2"
+               alt="" loading="lazy"/>
+          Water meters IOT
+        </Link>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+        <Navbar.Collapse>
+          <Nav className="mr-auto">
             <NavLink exact to="/" activeClassName="active" className="nav-link">Home</NavLink>
-          </li>
-          <li className="nav-item">
             <NavLink exact to="/meters" activeClassName="active" className="nav-link">Meters</NavLink>
-          </li>
-          <li className="nav-item">
             <NavLink exact to="/readings" activeClassName="active" className="nav-link">Readings</NavLink>
-          </li>
-          <li className="nav-item">
             <NavLink to="/about" activeClassName="active" className="nav-link">About app</NavLink>
-          </li>
-        </ul>
-      </div>
-    </div>
+
+            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider/>
+              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Nav>
+            <AuthNavItem/>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </>
   )
 }
 

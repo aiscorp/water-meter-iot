@@ -41,13 +41,12 @@ const AboutPage = props => {
   )
 }
 
-const mapStateToProps =state => ({
+const mapStateToProps = state => ({
     repoInfo: state.repo.repoInfo,
     repoReadme: state.repo.repoReadme,
     repoCommits: state.repo.repoCommits,
     loading: state.repo.loading
 })
-
 
 const mapDispatchToProps = {
   fetchRepoReadme,

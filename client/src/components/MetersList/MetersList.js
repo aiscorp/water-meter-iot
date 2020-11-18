@@ -12,7 +12,7 @@ const MetersList = (props) => {
     fetchMeters().then(() => {
       setLoading(false)
     })
-  }, [])
+  }, [fetchMeters])
 
   if (loading) {
     return <Loader/>

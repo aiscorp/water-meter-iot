@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "https://aiscorp.github.io/water-meters-iot",
+  "homepage1": "https://aiscorp.github.io/water-meters-iot",
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",

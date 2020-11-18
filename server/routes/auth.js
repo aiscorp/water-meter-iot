@@ -17,16 +17,20 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {failureRedirect: `${config.get('baseUrl')}/login`}),
   async (req, res) => {
-    console.log(req.query)
-    console.log('redirect to:', config.get('frontUrl'))
-
     res.redirect(`${config.get('frontUrl')}`)
   }
 )
 
 // /auth/+logout
 router.get('/logout', async (req, res) => {
-  req.logout()
+  req.logOut()
+  req.session.destroy(function (err) {
+    if (!err) {
+      res.status(200)
+        .clearCookie('connect.sid', {path: '/'})
+        .send({status: 'Success'})
+    }
+  })
   res.redirect(`${config.get('frontUrl')}`)
 })
 

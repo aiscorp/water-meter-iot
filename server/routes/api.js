@@ -20,8 +20,6 @@ const getState = (user) => ({
 // /api/+user
 router.get('/user', checkAuth, async (req, res) => {
   try {
-    console.log('User:', getState(req.user))
-
     res.status(200).send(getState(req.user))
   } catch (e) {
     res.status(500).json({message: 'Server error'})
@@ -47,8 +45,6 @@ router.get('/test/meters', async (req, res) => {
   try {
     const meters$ = await Meter.find()
 
-    console.log('Meters:', meters$)
-
     res.status(200).send(meters$)
   } catch (e) {
     res.status(500).json({message: 'Server error'})
@@ -62,10 +58,6 @@ router.get('/readings', async (req, res) => {
     const meter$ = await Meter.findOne({id})
     const readings$ = await Reading.find({meter: meter$})
 
-    console.log(meter$)
-    console.log('Readings by meter Id:', id)
-    console.log(readings$)
-
     res.status(200).send(readings$)
   } catch (e) {
     res.status(500).json({message: 'Server error'})
@@ -76,9 +68,6 @@ router.get('/readings', async (req, res) => {
 router.get('/test/readings', async (req, res) => {
   try {
     const readings$ = await Reading.find()
-
-    console.log('Readings:')
-    console.log(readings$)
 
     res.status(200).send(readings$)
   } catch (e) {

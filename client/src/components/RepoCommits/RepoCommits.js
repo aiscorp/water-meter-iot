@@ -12,7 +12,7 @@ const RepoCommits = (props) => {
     fetchRepoFirstCommits().then(() => {
       setLoading(false)
     })
-  }, [])
+  }, [fetchRepoFirstCommits])
 
   if (loading) {
     return <Loader/>
