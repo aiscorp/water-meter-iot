@@ -1,12 +1,13 @@
 import React from 'react'
 import {Container} from 'react-bootstrap'
+import Auth from '../components/Auth/Auth'
 
-const HomePage = props => {
+const ProfilePage = props => {
   return (
     <Container className="my-2">
-      <h2>Home page</h2>
+      <Auth/>
     </Container>
   )
 }
 
-export default HomePage
+export default ProfilePage

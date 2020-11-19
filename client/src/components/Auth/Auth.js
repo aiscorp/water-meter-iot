@@ -1,15 +1,12 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Button} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
 import {faGoogle} from '@fortawesome/free-brands-svg-icons'
-import {authLogin, authLogout, authUser} from '../../store/actions/auth'
-import {connect} from 'react-redux'
+import WithAuth from '../../hoc/WithAuth'
 
 const Auth = (props) => {
-  const {user, authUser, authLogin, authLogout} = props
-
-  useEffect(() => {authUser()}, [authUser])
+  const {user, authLogin, authLogout} = props
 
   if (user.authState) {
     return (
@@ -34,18 +31,7 @@ const Auth = (props) => {
       </div>
     )
   }
-
 }
 
-const mapStateToProps = state => ({
-  user: state.auth.user
-})
-
-const mapDispatchToProps = {
-  authLogin,
-  authLogout,
-  authUser
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Auth)
+export default WithAuth(Auth)
 

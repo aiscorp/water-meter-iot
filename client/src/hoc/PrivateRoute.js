@@ -5,9 +5,6 @@ import WithAuth from './WithAuth'
 const PrivateRoute = (props) => {
   const {user, children, ...rest} = props
 
-  console.log('PrivateRoute:props', props)
-  console.log('PrivateRoute:user', user)
-
   return (
     <Route
       {...rest}

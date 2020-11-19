@@ -25,7 +25,7 @@ const app = (
   <Provider store={store}>
     <ApolloProvider client={graphqlClient}>
       <Router basename={window.ENV.baseUrl}>
-        <App/>
+          <App/>
       </Router>
     </ApolloProvider>
   </Provider>

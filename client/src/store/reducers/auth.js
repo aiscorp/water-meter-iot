@@ -24,7 +24,7 @@ export default function authReducer(state = initialState, action) {
       }
     case FETCH_LOGOUT:
       return {
-        initialState
+        ...initialState
       }
     default:
       return state

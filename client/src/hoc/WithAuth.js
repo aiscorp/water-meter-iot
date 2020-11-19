@@ -2,7 +2,6 @@ import {authLogin, authLogout, authUser} from '../store/actions/auth'
 import {connect} from 'react-redux'
 import React, {useEffect} from 'react'
 
-
 const withAuth = ComposedComponent => {
   const mapStateToProps = state => ({
     user: state.auth.user
@@ -23,6 +22,5 @@ const withAuth = ComposedComponent => {
     }
   )
 }
-
 
 export default withAuth

@@ -1,18 +1,15 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import {faSignInAlt} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {authUser} from '../../store/actions/auth'
-import {connect} from 'react-redux'
+import WithAuth from '../../hoc/WithAuth'
 
 const AuthNavItem = (props) => {
-  const {user, authUser} = props
-
-  useEffect(() => {authUser()}, [authUser])
+  const {user} = props
 
   if (user.authState) {
     return (
-      <Link to="/" className="navbar-brand">
+      <Link to="/profile" className="navbar-brand">
         <img src={user.photo} width="30" height="30"
              className="d-inline-block align-top rounded-circle mr-2"
              alt="" loading="lazy"/>
@@ -21,7 +18,7 @@ const AuthNavItem = (props) => {
     )
   } else {
     return <>
-      <Link to="/" className="navbar-brand">
+      <Link to="/profile" className="navbar-brand">
         <FontAwesomeIcon className="mx-2 my-auto" size="1x" icon={faSignInAlt}/>
         Sing in...
       </Link>
@@ -29,13 +26,4 @@ const AuthNavItem = (props) => {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.auth.user
-})
-
-const mapDispatchToProps = {
-  authUser
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AuthNavItem)
-
+export default WithAuth(AuthNavItem)
