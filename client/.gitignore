@@ -7,7 +7,7 @@
 
 # Configs
 *.env
-.graphqlconfig
+../../gridnine-systems-test/.graphqlconfig
 /.cert
 
 # testing
