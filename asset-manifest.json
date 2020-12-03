@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.cfeae6da.chunk.css",
-    "main.js": "/static/js/main.166ce2c7.chunk.js",
-    "main.js.map": "/static/js/main.166ce2c7.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
-    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
-    "static/js/2.a4bf4554.chunk.js": "/static/js/2.a4bf4554.chunk.js",
-    "static/js/2.a4bf4554.chunk.js.map": "/static/js/2.a4bf4554.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.78a8757e84c34ebae71f62fc74806706.js": "/precache-manifest.78a8757e84c34ebae71f62fc74806706.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.cfeae6da.chunk.css.map": "/static/css/main.cfeae6da.chunk.css.map",
-    "static/js/2.a4bf4554.chunk.js.LICENSE.txt": "/static/js/2.a4bf4554.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/static/media/logo.92eec2f8.svg"
+    "main.css": "/water-meters-iot/static/css/main.cfeae6da.chunk.css",
+    "main.js": "/water-meters-iot/static/js/main.6ae5f83b.chunk.js",
+    "main.js.map": "/water-meters-iot/static/js/main.6ae5f83b.chunk.js.map",
+    "runtime-main.js": "/water-meters-iot/static/js/runtime-main.22f3ee0f.js",
+    "runtime-main.js.map": "/water-meters-iot/static/js/runtime-main.22f3ee0f.js.map",
+    "static/js/2.a4bf4554.chunk.js": "/water-meters-iot/static/js/2.a4bf4554.chunk.js",
+    "static/js/2.a4bf4554.chunk.js.map": "/water-meters-iot/static/js/2.a4bf4554.chunk.js.map",
+    "index.html": "/water-meters-iot/index.html",
+    "precache-manifest.0d3bb7f2f1a76d3602e073bc950c38d1.js": "/water-meters-iot/precache-manifest.0d3bb7f2f1a76d3602e073bc950c38d1.js",
+    "service-worker.js": "/water-meters-iot/service-worker.js",
+    "static/css/main.cfeae6da.chunk.css.map": "/water-meters-iot/static/css/main.cfeae6da.chunk.css.map",
+    "static/js/2.a4bf4554.chunk.js.LICENSE.txt": "/water-meters-iot/static/js/2.a4bf4554.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/water-meters-iot/static/media/logo.92eec2f8.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.09b85ec0.js",
+    "static/js/runtime-main.22f3ee0f.js",
     "static/js/2.a4bf4554.chunk.js",
     "static/css/main.cfeae6da.chunk.css",
-    "static/js/main.166ce2c7.chunk.js"
+    "static/js/main.6ae5f83b.chunk.js"
   ]
 }
